@@ -10,18 +10,7 @@ import UIKit
 
 class PriorityQueueTVC: UITableViewController {
 
-    var priority1 = CircularQueue()
-    var priority2 = CircularQueue()
-    var priority3 = CircularQueue()
-    var priority4 = CircularQueue()
-    var priority5 = CircularQueue()
-    var priority6 = CircularQueue()
-    var priority7 = CircularQueue()
-    var priority8 = CircularQueue()
-    var priority9 = CircularQueue()
-    var priority10 = CircularQueue()
-    var totalElements : Int = 0
-    var array = [String]()
+
     
 //change implementation to a single linear queue
 //segue to new view that allows dequeueing and priority bumping
@@ -31,52 +20,6 @@ class PriorityQueueTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
-        /*
-         for value in all data
-             if priority == 1:
-                 priority1.enqueue(value)
-         */
-        
-        for patient in allData{
-            let value = patient.value.priority
-            switch value {
-            case 10:
-                priority10.enQueue(anyItem: patient.key)
-                totalElements += 1
-            case 9:
-                priority9.enQueue(anyItem: patient.key)
-                totalElements += 1
-            case 8:
-                priority8.enQueue(anyItem: patient.key)
-                totalElements += 1
-            case 7:
-                priority7.enQueue(anyItem: patient.key)
-                totalElements += 1
-            case 6:
-                priority6.enQueue(anyItem: patient.key)
-                totalElements += 1
-            case 5:
-                priority5.enQueue(anyItem: patient.key)
-                totalElements += 1
-            case 4:
-                priority4.enQueue(anyItem: patient.key)
-                totalElements += 1
-            case 3:
-                priority3.enQueue(anyItem: patient.key)
-                totalElements += 1
-            case 2:
-                priority2.enQueue(anyItem: patient.key)
-                totalElements += 1
-            default:
-                priority1.enQueue(anyItem: patient.key)
-                totalElements += 1
-            }
-            
-        }
-        print(array)
-        print(totalElements)
     }
 
     override func didReceiveMemoryWarning() {
@@ -96,18 +39,17 @@ class PriorityQueueTVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return totalElements
+        return 0
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "celll", for: indexPath) as! CustomCell
-        let person = array[indexPath.row]
-        let cellDetail = String(describing: allData[person]!.priority)
-        print(cellDetail)
-        let cellName = ("\(String(describing: allData[person]!.surname)), \(String(describing: allData[person]!.forename))")
-        cell.textLabel?.text = cellName
-        cell.detailTextLabel?.text = "\(String(describing: allData[person]!.priority))/10"
+        //let person = array[indexPath.row]
+        //let cellDetail = String(describing: allData[person]!.priority)
+        //let cellName = ("\(String(describing: allData[person]!.surname)), \(String(describing: allData[person]!.forename))")
+        //cell.textLabel?.text = cellName
+        //cell.detailTextLabel?.text = "\(String(describing: allData[person]!.priority))/10"
 
         return cell
         
