@@ -18,6 +18,7 @@
 		856118F4200E2CCD007C9FF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 856118F2200E2CCD007C9FF3 /* LaunchScreen.storyboard */; };
 		856118FF200E2CCE007C9FF3 /* HospitableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 856118FE200E2CCE007C9FF3 /* HospitableTests.swift */; };
 		8561190A200E2CCE007C9FF3 /* HospitableUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85611909200E2CCE007C9FF3 /* HospitableUITests.swift */; };
+		85BC6881201D27C3007D4459 /* ViewPriorityPatient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BC6880201D27C3007D4459 /* ViewPriorityPatient.swift */; };
 		85C18DDC20139C10000C48F9 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C18DDA20139C10000C48F9 /* CustomCell.swift */; };
 		85C18DDD20139C10000C48F9 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C18DDB20139C10000C48F9 /* AlertController.swift */; };
 		85CA91AD201616A0002F7505 /* PriorityQueueTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CA91AC201616A0002F7505 /* PriorityQueueTVC.swift */; };
@@ -59,6 +60,7 @@
 		85611905200E2CCE007C9FF3 /* HospitableUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HospitableUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		85611909200E2CCE007C9FF3 /* HospitableUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitableUITests.swift; sourceTree = "<group>"; };
 		8561190B200E2CCE007C9FF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		85BC6880201D27C3007D4459 /* ViewPriorityPatient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPriorityPatient.swift; sourceTree = "<group>"; };
 		85C18DDA20139C10000C48F9 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		85C18DDB20139C10000C48F9 /* AlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		85CA91AC201616A0002F7505 /* PriorityQueueTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityQueueTVC.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 		856118E5200E2CCD007C9FF3 /* Hospitable */ = {
 			isa = PBXGroup;
 			children = (
+				85BC6880201D27C3007D4459 /* ViewPriorityPatient.swift */,
 				856118E6200E2CCD007C9FF3 /* AppDelegate.swift */,
 				8520D6E22011FD87009A7BEB /* Data.swift */,
 				8520D6E420120243009A7BEB /* AddPatientVC.swift */,
@@ -293,6 +296,7 @@
 				85CA91AF20167584002F7505 /* QueueClass.swift in Sources */,
 				85C18DDC20139C10000C48F9 /* CustomCell.swift in Sources */,
 				856118E7200E2CCD007C9FF3 /* AppDelegate.swift in Sources */,
+				85BC6881201D27C3007D4459 /* ViewPriorityPatient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,6 +12,7 @@ class PriorityQueueTVC: UITableViewController {
 
     var q = Queue(lengthOfQueue: 20)
     var array = [String]()
+    var tag : String = ""
 
     
 //change implementation to a single linear queue
@@ -23,10 +24,6 @@ class PriorityQueueTVC: UITableViewController {
         super.viewDidLoad()
         array = []
         
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-     
         for item in allData{
             q.addItemToQueue(itemToAdd: dataItem.init(name: item.key, priority: item.value.priority))
         }
@@ -34,6 +31,12 @@ class PriorityQueueTVC: UITableViewController {
         for item in q.queue{
             array.append(item.name)
         }
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+     
+        self.tableView.reloadData()
     }
     
     
@@ -59,15 +62,27 @@ class PriorityQueueTVC: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "celll", for: indexPath) as! CustomCell
+        let cell = UITableViewCell() //tableView.dequeueReusableCell(withIdentifier: "celll", for: indexPath) as! CustomCell
         let person = array[indexPath.row]
         cell.textLabel?.text = ("\(String(describing: allData[person]!.surname)), \(String(describing: allData[person]!.forename))")
         cell.detailTextLabel?.text = "\(String(describing: allData[person]!.priority))/10"
 
-        
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-       
+        tag = array[indexPath.row]
+        print(array)
+        print(tag)
+        performSegue(withIdentifier: "PriorityViewSegue", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        let toSend = segue.destination as! ViewPriorityPatient
+        toSend.datacomingin1 = tag
     }
  
 
