@@ -135,9 +135,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="N3a-8Y-Paq" kind="show" identifier="TableViewSegue" id="gFu-Wo-tst"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -145,6 +142,9 @@
                             <outlet property="delegate" destination="Avg-rc-qZA" id="e8J-JW-3cB"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="N3a-8Y-Paq" kind="show" identifier="TableViewSegue" id="dLS-pu-Gfk"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3B2-0O-kMh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

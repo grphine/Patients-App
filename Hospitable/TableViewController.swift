@@ -54,8 +54,8 @@ class TableViewController: UITableViewController, UISearchResultsUpdating {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = UITableViewCell()
-       // let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
+        //let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
         if let patients = filteredPatients?.sorted() {
             let person = patients[indexPath.row]
             let cellName = ("\(String(describing: allData[person]!.surname)), \(String(describing: allData[person]!.forename))")
