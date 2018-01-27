@@ -23,7 +23,11 @@ class PriorityQueueTVC: UITableViewController {
     var totalElements : Int = 0
     var array = [String]()
     
-
+//change implementation to a single linear queue
+//segue to new view that allows dequeueing and priority bumping
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,43 +44,33 @@ class PriorityQueueTVC: UITableViewController {
             switch value {
             case 10:
                 priority10.enQueue(anyItem: patient.key)
-                array.append(patient.key)
                 totalElements += 1
             case 9:
                 priority9.enQueue(anyItem: patient.key)
-                array.append(patient.key)
                 totalElements += 1
             case 8:
                 priority8.enQueue(anyItem: patient.key)
-                array.append(patient.key)
                 totalElements += 1
             case 7:
                 priority7.enQueue(anyItem: patient.key)
-                array.append(patient.key)
                 totalElements += 1
             case 6:
                 priority6.enQueue(anyItem: patient.key)
-                array.append(patient.key)
                 totalElements += 1
             case 5:
                 priority5.enQueue(anyItem: patient.key)
-                array.append(patient.key)
                 totalElements += 1
             case 4:
                 priority4.enQueue(anyItem: patient.key)
-                array.append(patient.key)
                 totalElements += 1
             case 3:
                 priority3.enQueue(anyItem: patient.key)
-                array.append(patient.key)
                 totalElements += 1
             case 2:
                 priority2.enQueue(anyItem: patient.key)
-                array.append(patient.key)
                 totalElements += 1
             default:
                 priority1.enQueue(anyItem: patient.key)
-                array.append(patient.key)
                 totalElements += 1
             }
             
