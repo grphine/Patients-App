@@ -1,107 +1,103 @@
-//: [Previous](@previous)
 
-import Foundation
+import UIKit
+
+struct dataItem {
+    
+    var name:String!
+    var priority:Int!
+    
+}
 
 class Queue {
     
+    // setup the array that will hold the queue
+    var queue = [dataItem]()
     
-    // struct of people in the crew
-    struct Person {
+    // holds the current queue positions
+    var rear = 0
+    var front = 0
+    
+    var queueSize:Int!
+    
+    init(lengthOfQueue:Int) {
         
-        var name: String
-        var priority: Int
+        // create the queue depending on the length asked
+        for _ in 0...lengthOfQueue - 1 {
+            queue.append(dataItem(name: "nil", priority: -1))
+        }
         
-        init () {
+        queueSize = lengthOfQueue
+    }
+    
+    // adds an item to the queue
+    func addItemToQueue(itemToAdd: dataItem) {
+        
+        // check if queue is full
+        if (rear - front == queueSize) {
+            print("Queue full")
+            return
+        }
+        
+        // var which keeps track of where we will insert the new item (deafult value is rear as if there are no values in the array we will insert a position 0)
+        var insersionIndex = rear % queueSize
+        
+        // keeps track of if we have found a position for the item
+        var foundPosition = false
+        
+        // init the position we will start searching at
+        var currentPosition = front
+        
+        // keep on searching through the array until we find where the item needs to go
+        while ((foundPosition == false) && (front != rear) && ((currentPosition) < (rear))) {
             
-            name = ""
-            // priority 21 denotes a non-element in the queue
-            priority = 21
-        }
-    }
-    
-    
-    // properties of the class
-    var theQueue = [Person]()
-    var frontPointer: Int = 0
-    var rearPointer: Int = 0
-    var size: Int = 0
-    
-    // length of queue input to fit the need - but once created cannot be changed
-    init (lengthOfQueue: Int) {
-        for _ in 0...(lengthOfQueue - 1) {
-            // create an array of correct length of non-element persons
-            theQueue.append(Person())
-        }
-    }
-    
-    
-    // method to check if the queue is empty
-    func isEmpty() -> Bool {
-        if size == 0 {
-            return true
-        }
-        else {
-            return false
-        }
-    }
-    
-    
-    // method to check if the queue is full
-    func isFull() -> Bool {
-        if size == theQueue.count {
-            return true
-        }
-        else {
-            return false
-        }
-    }
-    
-    
-    // method to add a person to the queue in the correct place
-    func enQueue(personName: String, personPriority: Int) {
-        // create a new person record using input parameters
-        var newPerson = Person()
-        newPerson.name = personName
-        newPerson.priority = personPriority
-        // can't enqueue if the queue is full
-        if !isFull() {
-            // add 1 to the size
-            size = size + 1
-            // find the location of the point where the new element should go
-            var insertLocation = frontPointer
-            while theQueue[insertLocation].priority <= newPerson.priority {
-                insertLocation = ((insertLocation + 1) % theQueue.count)
+            // check if the priorty of the item is greater than the next item in the queue
+            if itemToAdd.priority > queue[currentPosition % queueSize].priority {
+                
+                // we want to insert the item one before this item
+                insersionIndex = (currentPosition) % queueSize
+                foundPosition = true
             }
-            // shift elements above the insertion point up
-            var elementAboutToBeShifted = rearPointer
-            while elementAboutToBeShifted != insertLocation {
-                theQueue[(elementAboutToBeShifted + 1) % theQueue.count] = theQueue[elementAboutToBeShifted]
-                if elementAboutToBeShifted == 0 {
-                    elementAboutToBeShifted = theQueue.count - 1
-                }
-                else {
-                    elementAboutToBeShifted = elementAboutToBeShifted - 1
-                }
+            else {
+                insersionIndex = rear
             }
-            // insert the new element
-            theQueue[insertLocation] = newPerson
-            // increment the rear pointer, unless the final index of the queue, in which case the rear pointer sets to 0
-            rearPointer = ((rearPointer + 1) % theQueue.count)
+            
+            // increment to the next position
+            currentPosition += 1
         }
-    }
-    
-    
-    // method to dequeue the front element
-    func deQueue() {
-        // can't dequeue if the queue is empty
-        if !isEmpty() {
-            // clear the front of the queue
-            theQueue[frontPointer] = Person()
-            // increment the front pointer, unless the final index of the queue, in which case the front pointer sets to 0
-            frontPointer = ((frontPointer + 1) % theQueue.count)
-            size = size - 1
+        
+        // move everthing after the index up one position
+        for item in stride(from: rear % queueSize, to: insersionIndex, by: -1) {
+            
+            // something wierd is going on with moving back the array
+            
+            queue[item % queueSize] = queue[(item - 1) % queueSize]
             
         }
+        
+        
+        // insert the new item
+        queue[insersionIndex % queueSize] = itemToAdd
+        
+        // increment the rear
+        rear += 1
+        
     }
     
+    // dequeues the next item
+    func dequeItem() -> dataItem {
+        
+        
+        // check if queue is empty
+        if (rear == front) {
+            print("queue empty")
+            return dataItem(name: "nil", priority: -1)
+        }
+        
+        // move the front pointer forward one
+        front += 1
+        
+        // return the value
+        return queue[(front - 1) % queueSize]
+    }
 }
+

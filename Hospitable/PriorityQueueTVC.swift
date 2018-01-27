@@ -10,6 +10,8 @@ import UIKit
 
 class PriorityQueueTVC: UITableViewController {
 
+    var q = Queue(lengthOfQueue: 20)
+    var array = [String]()
 
     
 //change implementation to a single linear queue
@@ -19,9 +21,22 @@ class PriorityQueueTVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        array = []
         
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+     
+        for item in allData{
+            q.addItemToQueue(itemToAdd: dataItem.init(name: item.key, priority: item.value.priority))
+        }
+        
+        for item in q.queue{
+            array.append(item.name)
+        }
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -39,18 +54,17 @@ class PriorityQueueTVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return (q.rear - q.front)
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "celll", for: indexPath) as! CustomCell
-        //let person = array[indexPath.row]
-        //let cellDetail = String(describing: allData[person]!.priority)
-        //let cellName = ("\(String(describing: allData[person]!.surname)), \(String(describing: allData[person]!.forename))")
-        //cell.textLabel?.text = cellName
-        //cell.detailTextLabel?.text = "\(String(describing: allData[person]!.priority))/10"
+        let person = array[indexPath.row]
+        cell.textLabel?.text = ("\(String(describing: allData[person]!.surname)), \(String(describing: allData[person]!.forename))")
+        cell.detailTextLabel?.text = "\(String(describing: allData[person]!.priority))/10"
 
+        
         return cell
         
        
