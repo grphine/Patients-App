@@ -95,9 +95,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="vjC-Da-Wx7" kind="show" identifier="PriorityViewSegue" id="wXa-uL-Hi1"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -105,6 +102,9 @@
                             <outlet property="delegate" destination="DGc-oP-50g" id="gZF-k5-Tka"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="vjC-Da-Wx7" kind="show" identifier="PriorityViewSegue" id="mGf-OA-QoX"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="axr-go-VEf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -62,13 +62,14 @@ class PriorityQueueTVC: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell() //tableView.dequeueReusableCell(withIdentifier: "celll", for: indexPath) as! CustomCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "celll", for: indexPath) as! CustomCell
         let person = array[indexPath.row]
         cell.textLabel?.text = ("\(String(describing: allData[person]!.surname)), \(String(describing: allData[person]!.forename))")
         cell.detailTextLabel?.text = "\(String(describing: allData[person]!.priority))/10"
 
         return cell
     }
+    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
