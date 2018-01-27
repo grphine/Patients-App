@@ -56,7 +56,7 @@ class TableViewController: UITableViewController, UISearchResultsUpdating {
         
         let cell = UITableViewCell()
        // let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
-        if let patients = filteredPatients {
+        if let patients = filteredPatients?.sorted() {
             let person = patients[indexPath.row]
             let cellName = ("\(String(describing: allData[person]!.surname)), \(String(describing: allData[person]!.forename))")
             cell.textLabel?.text = cellName
@@ -85,6 +85,7 @@ class TableViewController: UITableViewController, UISearchResultsUpdating {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        sortedIDs = sortedIDs.sorted()
         let toFind = filteredPatients![indexPath.row]
         tag = sortedIDs[sortedIDs.index(of: toFind)!]
         self.performSegue(withIdentifier: "TableViewSegue", sender: nil)
@@ -93,7 +94,7 @@ class TableViewController: UITableViewController, UISearchResultsUpdating {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        filteredPatients = sortedIDs
+        filteredPatients = sortedIDs.sorted()
         super.viewWillAppear(true)
         self.tableView.reloadData()
         //after a patient is deleted (global), filteredPatients (local) needs to be updated from sortedIDs (global)
