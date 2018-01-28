@@ -13,10 +13,6 @@ class PriorityQueueTVC: UITableViewController {
     var q = Queue(lengthOfQueue: 20)
     var array = [String]()
     var tag : String = ""
-
-    
-//change implementation to a single linear queue
-//segue to new view that allows dequeueing and priority bumping
     
     
     
@@ -27,10 +23,12 @@ class PriorityQueueTVC: UITableViewController {
         for item in allData{
             q.addItemToQueue(itemToAdd: dataItem.init(name: item.key, priority: item.value.priority))
         }
+        //adds all patients to the queue, by getting their key in the dictionary, and their priority in the value
         
         for item in q.queue{
             array.append(item.name)
         }
+        //creates an array of the names in order they appear in the queue
         
     }
     
@@ -56,8 +54,8 @@ class PriorityQueueTVC: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return (q.rear - q.front)
+        //above is the length of the queue
     }
 
     
@@ -74,8 +72,6 @@ class PriorityQueueTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tag = array[indexPath.row]
-        print(array)
-        print(tag)
         performSegue(withIdentifier: "PriorityViewSegue", sender: nil)
     }
     
