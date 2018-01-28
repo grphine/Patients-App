@@ -29,7 +29,6 @@ class PriorityQueueTVC: UITableViewController {
             array.append(item.name)
         }
         //creates an array of the names in order they appear in the queue
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,6 +61,8 @@ class PriorityQueueTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "celll", for: indexPath) as! CustomCell
         let person = array[indexPath.row]
+        
+        print(person)
         cell.textLabel?.text = ("\(String(describing: allData[person]!.surname)), \(String(describing: allData[person]!.forename))")
         cell.detailTextLabel?.text = "\(String(describing: allData[person]!.priority))/10"
 
@@ -81,27 +82,34 @@ class PriorityQueueTVC: UITableViewController {
         let toSend = segue.destination as! ViewPriorityPatient
         toSend.datacomingin1 = tag
     }
- 
+    
+    //----------------------
 
-    /*
+
+    
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
-
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            //tableView.deleteRows(at: [indexPath], with: .fade)
+            array.remove(at: indexPath.row)
+            q.dequeItem()
+            //remove record in allData
+            self.tableView.reloadData()
+            
+            
+        }
+//           else if editingStyle == .insert {
+//            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+//        }
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.
