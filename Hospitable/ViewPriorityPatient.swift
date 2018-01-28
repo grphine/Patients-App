@@ -25,7 +25,7 @@ class ViewPriorityPatient: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //load patient data by getting tag from table view
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
+        //self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         let patient = allData[datacomingin1]
         
