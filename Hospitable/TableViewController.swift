@@ -118,10 +118,3 @@ class TableViewController: UITableViewController, UISearchResultsUpdating {
 
 
 
-
-//integrate search function as is demonstrated in app to the left
-
-
-
-
-

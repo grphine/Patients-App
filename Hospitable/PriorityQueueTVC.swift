@@ -31,6 +31,7 @@ class PriorityQueueTVC: UITableViewController {
         //creates an array of the names in order they appear in the queue
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
      
         self.tableView.reloadData()
@@ -82,7 +83,7 @@ class PriorityQueueTVC: UITableViewController {
     }
     
     //----------------------
-
+    //Below, the code allowing for a delete button
 
     
     // Override to support conditional editing of the table view.
