@@ -61,8 +61,6 @@ class PriorityQueueTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "celll", for: indexPath) as! CustomCell
         let person = array[indexPath.row]
-        
-        print(person)
         cell.textLabel?.text = ("\(String(describing: allData[person]!.surname)), \(String(describing: allData[person]!.forename))")
         cell.detailTextLabel?.text = "\(String(describing: allData[person]!.priority))/10"
 
@@ -97,11 +95,13 @@ class PriorityQueueTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            //tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            allData.removeValue(forKey: array[indexPath.row])
             array.remove(at: indexPath.row)
             q.dequeItem()
-            //remove record in allData
+            tableView.deleteRows(at: [indexPath], with: .automatic)
             self.tableView.reloadData()
+            //when patient is dequeued, their records are deleted so they will not appear in any other views
             
             
         }

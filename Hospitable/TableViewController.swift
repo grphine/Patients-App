@@ -85,7 +85,7 @@ class TableViewController: UITableViewController, UISearchResultsUpdating {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        sortedIDs = sortedIDs.sorted()
+        sortedIDs = allData.keys.sorted()
         let toFind = filteredPatients![indexPath.row]
         tag = sortedIDs[sortedIDs.index(of: toFind)!]
         self.performSegue(withIdentifier: "TableViewSegue", sender: nil)
@@ -94,6 +94,7 @@ class TableViewController: UITableViewController, UISearchResultsUpdating {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        sortedIDs = allData.keys.sorted()
         filteredPatients = sortedIDs.sorted()
         super.viewWillAppear(true)
         self.tableView.reloadData()
